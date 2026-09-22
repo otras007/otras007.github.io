@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>电影大亨-行业动态与商业案例分析平台</title>
+    <meta name="description" content="电影大亨专注于影视产业深度报道、电影制作流程解析、票房数据分析及影视投资策略。提供最新的电影资讯、幕后故事及行业专家解读。">
+    <meta name="keywords" content="电影大亨, 影视行业, 电影制作, 票房分析, 影视投资">
+    <style>
+        :root {
+            --primary-color: #e50914; /* Netflix Red style */
+            --primary-hover: #b20710;
+            --bg-dark: #141414;
+            --bg-card: #1f1f1f;
+            --text-main: #ffffff;
+            --text-secondary: #b3b3b3;
+            --accent-gold: #f5c518; /* IMDb Gold style */
+            --spacing-unit: 8px;
+            --container-width: 1200px;
+            --border-radius: 4px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Utility */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--primary-color);
+            padding-left: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .section-title a {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-weight: normal;
+        }
+
+        .section-title a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Header */
+        header {
+            background-color: rgba(20, 20, 20, 0.95);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #333;
+            backdrop-filter: blur(5px);
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            letter-spacing: -1px;
+        }
+
+        .logo span {
+            color: var(--text-main);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--text-main);
+        }
+
+        .search-box {
+            position: relative;
+        }
+
+        .search-box input {
+            background: #000;
+            border: 1px solid #333;
+            padding: 8px 35px 8px 12px;
+            border-radius: 4px;
+            color: white;
+            font-size: 0.9rem;
+            width: 200px;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .search-box::after {
+            content: '🔍';
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 12px;
+            opacity: 0.5;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 500px;
+            background: linear-gradient(to top, var(--bg-dark), transparent), url('https://picsum.photos/seed/cinema/1600/900') center/cover no-repeat;
+            display: flex;
+            align-items: flex-end;
+            padding-bottom: 60px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero-tag {
+            background-color: var(--accent-gold);
+            color: #000;
+            padding: 4px 8px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 10px;
+            border-radius: 2px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #ddd;
+            margin-bottom: 25px;
+            max-width: 600px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid white;
+            margin-left: 10px;
+        }
+
+        .btn-outline:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        /* Main Grid */
+        .main-layout {
+            display: grid;
+            grid-template-columns: 2.5fr 1fr;
+            gap: 40px;
+            padding: 40px 0;
+        }
+
+        /* Movie Grid */
+        .movie-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .movie-card {
+            background-color: var(--bg-card);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            transition: transform 0.3s;
+            position: relative;
+        }
+
+        .movie-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .poster-wrapper {
+            position: relative;
+            padding-top: 150%; /* 2:3 Aspect Ratio */
+            background-color: #333;
+        }
+
+        .poster-wrapper img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .match-score {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: rgba(0,0,0,0.7);
+            color: var(--accent-gold);
+            padding: 2px 6px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            border-radius: 2px;
+        }
+
+        .card-info {
+            padding: 12px;
+        }
+
+        .card-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .card-meta {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .rating {
+            color: var(--accent-gold);
+        }
+
+        /* Sidebar */
+        aside {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .sidebar-section {
+            background-color: var(--bg-card);
+            padding: 20px;
+            border-radius: var(--border-radius);
+        }
+
+        .sidebar-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #333;
+        }
+
+        .trend-list li {
+            margin-bottom: 15px;
+        }
+
+        .trend-list a {
+            display: block;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .trend-list a:hover {
+            color: var(--primary-color);
+        }
+
+        .trend-meta {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+
+        /* Industry Analysis Section */
+        .analysis-section {
+            margin-top: 60px;
+        }
+
+        .analysis-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .analysis-card {
+            background-color: var(--bg-card);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+
+        .analysis-img {
+            height: 180px;
+            background-color: #333;
+            overflow: hidden;
+        }
+
+        .analysis-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .analysis-card:hover .analysis-img img {
+            transform: scale(1.05);
+        }
+
+        .analysis-content {
+            padding: 20px;
+        }
+
+        .analysis-tag {
+            color: var(--primary-color);
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .analysis-content h3 {
+            margin: 8px 0;
+            font-size: 1.2rem;
+        }
+
+        .analysis-content p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #000;
+            padding: 50px 0 20px;
+            margin-top: 60px;
+            border-top: 1px solid #333;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .footer-col ul li a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            padding-top: 20px;
+            border-top: 1px solid #222;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .main-layout {
+                grid-template-columns: 1fr;
+            }
+            .analysis-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-wrapper {
+                flex-direction: column;
+                gap: 15px;
+            }
+            nav ul {
+                gap: 15px;
+                font-size: 0.85rem;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .analysis-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-wrapper">
+            <a href="#" class="logo">电影大亨<span>.</span></a>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#">最新资讯</a></li>
+                    <li><a href="#">票房榜单</a></li>
+                    <li><a href="#">影视投资</a></li>
+                    <li><a href="#">制作幕后</a></li>
+                    <li><a href="#">专题报道</a></li>
+                </ul>
+            </nav>
+            <div class="search-box">
+                <input type="text" placeholder="搜索电影、导演或资讯...">
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container hero-content">
+                <span class="hero-tag">深度解读</span>
+                <h1>流媒体时代的电影商业模式变革</h1>
+                <p>随着流媒体平台对传统影院的冲击，电影大亨们正在重新思考发行策略与内容定价。本文深入分析Disney+、Netflix等巨头的战略布局。</p>
+                <div class="hero-buttons">
+                    <a href="#" class="btn">阅读全文</a>
+                    <a href="#" class="btn btn-outline">查看数据</a>
+                </div>
+            </div>
+        </section>
+
+        <div class="container main-layout">
+            <!-- Main Content Area -->
+            <div class="content-area">
+                <!-- Trending Movies -->
+                <section>
+                    <div class="section-title">
+                        <h2>本周热门影片</h2>
+                        <a href="#">查看全部 &rarr;</a>
+                    </div>
+                    <div class="movie-grid">
+                        <!-- Movie Card 1 -->
+                        <article class="movie-card">
+                            <div class="poster-wrapper">
+                                <img src="https://picsum.photos/seed/movie1/300/450" alt="电影海报">
+                                <span class="match-score">98% 匹配</span>
+                            </div>
+                            <div class="card-info">
+                                <h3 class="card-title">星际穿越：重制版</h3>
+                                <div class="card-meta">
+                                    <span>科幻 / 冒险</span>
+                                    <span class="rating">★ 9.2</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Movie Card 2 -->
+                        <article class="movie-card">
+                            <div class="poster-wrapper">
+                                <img src="https://picsum.photos/seed/movie2/300/450" alt="电影海报">
+                                <span class="match-score">95% 匹配</span>
+                            </div>
+                            <div class="card-info">
+                                <h3 class="card-title">暗夜行者</h3>
+                                <div class="card-meta">
+                                    <span>动作 / 悬疑</span>
+                                    <span class="rating">★ 8.8</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Movie Card 3 -->
+                        <article class="movie-card">
+                            <div class="poster-wrapper">
+                                <img src="https://picsum.photos/seed/movie3/300/450" alt="电影海报">
+                                <span class="match-score">92% 匹配</span>
+                            </div>
+                            <div class="card-info">
+                                <h3 class="card-title">未来之城</h3>
+                                <div class="card-meta">
+                                    <span>剧情 / 科幻</span>
+                                    <span class="rating">★ 8.5</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Movie Card 4 -->
+                        <article class="movie-card">
+                            <div class="poster-wrapper">
+                                <img src="https://picsum.photos/seed/movie4/300/450" alt="电影海报">
+                                <span class="match-score">89% 匹配</span>
+                            </div>
+                            <div class="card-info">
+                                <h3 class="card-title">迷雾侦探</h3>
+                                <div class="card-meta">
+                                    <span>犯罪 / 惊悚</span>
+                                    <span class="rating">★ 8.3</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Movie Card 5 -->
+                        <article class="movie-card">
+                            <div class="poster-wrapper">
+                                <img src="https://picsum.photos/seed/movie5/300/450" alt="电影海报">
+                                <span class="match-score">96% 匹配</span>
+                            </div>
+                            <div class="card-info">
+                                <h3 class="card-title">深海探险记</h3>
+                                <div class="card-meta">
+                                    <span>纪录片</span>
+                                    <span class="rating">★ 9.0</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Movie Card 6 -->
+                        <article class="movie-card">
+                            <div class="poster-wrapper">
+                                <img src="https://picsum.photos/seed/movie6/300/450" alt="电影海报">
+                                <span class="match-score">85% 匹配</span>
+                            </div>
+                            <div class="card-info">
+                                <h3 class="card-title">极速风暴</h3>
+                                <div class="card-meta">
+                                    <span>动作 / 竞速</span>
+                                    <span class="rating">★ 7.9</span>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+
+                <!-- Industry Analysis -->
+                <section class="analysis-section">
+                    <div class="section-title">
+                        <h2>行业深度分析</h2>
+                        <a href="#">更多专栏 &rarr;</a>
+                    </div>
+                    <div class="analysis-grid">
+                        <article class="analysis-card">
+                            <div class="analysis-img">
+                                <img src="https://picsum.photos/seed/industry1/600/400" alt="分析图片">
+                            </div>
+                            <div class="analysis-content">
+                                <span class="analysis-tag">制片策略</span>
+                                <h3>如何平衡艺术价值与商业回报</h3>
+                                <p>在当今高成本的制作环境下，电影制片人面临着前所未有的挑战。本文探讨了独立电影与商业大片在资金分配上的不同策略。</p>
+                            </div>
+                        </article>
+
+                        <article class="analysis-card">
+                            <div class="analysis-img">
+                                <img src="https://picsum.photos/seed/industry2/600/400" alt="分析图片">
+                            </div>
+                            <div class="analysis-content">
+                                <span class="analysis-tag">票房分析</span>
+                                <h3>全球票房的复苏路径与预测</h3>
+                                <p>后疫情时代，电影市场正在经历怎样的反弹？通过分析北美及亚太地区的票房数据，我们为您预测下一季度的市场走向。</p>
+                            </div>
+                        </article>
+
+                        <article class="analysis-card">
+                            <div class="analysis-img">
+                                <img src="https://picsum.photos/seed/industry3/600/400" alt="分析图片">
+                            </div>
+                            <div class="analysis-content">
+                                <span class="analysis-tag">技术前沿</span>
+                                <h3>AI在影视后期制作中的应用</h3>
+                                <p>人工智能技术正在改变电影制作的每一个环节，从特效合成到剧本辅助创作，技术革新正在重塑电影大亨的工作方式。</p>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Sidebar -->
+            <aside>
+                <!-- Top Box Office -->
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title">全球票房 TOP 10</h3>
+                    <ol class="trend-list">
+                        <li>
+                            <a href="#">1. 奇迹：源点</a>
+                            <div class="trend-meta">全球: $8.5亿 | 本周: $420万</div>
+                        </li>
+                        <li>
+                            <a href="#">2. 速度与激情12</a>
+                            <div class="trend-meta">全球: $7.2亿 | 本周: $890万</div>
+                        </li>
+                        <li>
+                            <a href="#">3. 独行月球</a>
+                            <div class="trend-meta">全球: $6.8亿 | 本周: $1.2亿</div>
+                        </li>
+                        <li>
+                            <a href="#">4. 雷神4</a>
+                            <div class="trend-meta">全球: $3.5亿 | 本周: $150万</div>
+                        </li>
+                        <li>
+                            <a href="#">5. 蜘蛛侠：纵横宇宙</a>
+                            <div class="trend-meta">全球: $6.9亿 | 本周: $300万</div>
+                        </li>
+                    </ol>
+                </div>
+
+                <!-- Investment Guide -->
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title">影视投资指南</h3>
+                    <ul class="trend-list">
+                        <li>
+                            <a href="#">新人如何参与电影投资？</a>
+                        </li>
+                        <li>
+                            <a href="#">影视版权交易注意事项</a>
+                        </li>
+                        <li>
+                            <a href="#">票房分账机制详解</a>
+                        </li>
+                        <li>
+                            <a href="#">明星片酬与制作成本占比</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter -->
+                <div class="sidebar-section" style="background: linear-gradient(135deg, #1f1f1f, #2a2a2a);">
+                    <h3 class="sidebar-title">订阅行业周报</h3>
+                    <p style="font-size: 0.9rem; color: #ccc; margin-bottom: 15px;">获取最新的电影资讯、票房数据及投资策略。</p>
+                    <input type="email" placeholder="您的邮箱地址" style="width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 4px; border: none;">
+                    <button class="btn" style="width: 100%; text-align: center;">立即订阅</button>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="#" class="logo" style="font-size: 1.5rem; margin-bottom: 15px; display: inline-block;">电影大亨<span>.</span></a>
+                    <p style="color: #999; font-size: 0.9rem; line-height: 1.6;">
+                        电影大亨致力于为影视行业从业者、投资人及爱好者提供最专业的行业资讯与深度分析。连接创意与资本，见证光影奇迹。
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4>行业资讯</h4>
+                    <ul>
+                        <li><a href="#">国内动态</a></li>
+                        <li><a href="#">国际视野</a></li>
+                        <li><a href="#">电影节报道</a></li>
+                        <li><a href="#">奖项盘点</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>资源服务</h4>
+                    <ul>
+                        <li><a href="#">剧本交易平台</a></li>
+                        <li><a href="#">演员招募</a></li>
+                        <li><a href="#">影视设备租赁</a></li>
+                        <li><a href="#">行业数据库</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>关于我们</h4>
+                    <ul>
+                        <li><a href="#">公司简介</a></li>
+                        <li><a href="#">加入我们</a></li>
+                        <li><a href="#">联系方式</a></li>
+                        <li><a href="#">广告合作</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 电影大亨 版权所有. 本站内容仅供学习参考，不代表投资建议。</p>
+            </div>
+        </div>
+    </footer>
+
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</body>
+  </html>
