@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="2024年国产汽车质量排行榜，权威盘点吉利、比亚迪、长安等主流品牌可靠性数据。包含故障率统计、车主口碑评分、新车质量报告及选购建议。">
+    <meta name="keywords" content="国产汽车质量排行榜,国产车质量排名,汽车可靠性,国产车口碑,汽车故障率">
+    <title>国产汽车质量排行榜 - 2024年度国产车可靠性评测与选购指南</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #0056b3;
+            --secondary-color: #f0f4f8;
+            --accent-color: #ff9800;
+            --text-main: #333333;
+            --text-light: #666666;
+            --bg-body: #ffffff;
+            --bg-card: #ffffff;
+            --border-color: #e0e0e0;
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+            --radius: 8px;
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Layout Utilities */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-padding {
+            padding: 60px 0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* Header & Nav */
+        header {
+            background: #fff;
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--text-main);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-weight: 500;
+            color: var(--text-main);
+            font-size: 16px;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-color);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #0056b3 0%, #003d80 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 40px;
+        }
+
+        .stat-item h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-color);
+        }
+
+        .stat-item p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Filter Bar */
+        .filter-bar {
+            background: var(--secondary-color);
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .filter-content {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 8px 20px;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            background: white;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        /* Ranking Table */
+        .ranking-section {
+            background: #fff;
+        }
+
+        .ranking-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .ranking-header h2 {
+            font-size: 24px;
+            border-left: 5px solid var(--primary-color);
+            padding-left: 15px;
+        }
+
+        .data-source {
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        .ranking-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .ranking-table th, .ranking-table td {
+            padding: 18px 25px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .ranking-table th {
+            background: var(--secondary-color);
+            font-weight: 600;
+            color: var(--text-main);
+            font-size: 15px;
+        }
+
+        .ranking-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .ranking-table tbody tr:hover {
+            background-color: #f9fbfd;
+        }
+
+        .rank-num {
+            font-weight: 800;
+            font-size: 18px;
+            width: 50px;
+            text-align: center;
+            display: inline-block;
+        }
+
+        .rank-1 { color: #d4af37; }
+        .rank-2 { color: #a0a0a0; }
+        .rank-3 { color: #cd7f32; }
+
+        .brand-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .brand-logo {
+            width: 40px;
+            height: 40px;
+            background: #eee;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: #666;
+            font-weight: bold;
+        }
+
+        .brand-name {
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .score-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .score-high { background: #e8f5e9; color: #2e7d32; }
+        .score-mid { background: #fff3e0; color: #ef6c00; }
+        .score-low { background: #ffebee; color: #c62828; }
+
+        .trend-up { color: #2e7d32; }
+        .trend-down { color: #c62828; }
+
+        /* Analysis Section */
+        .analysis-section {
+            background: #fafafa;
+        }
+
+        .analysis-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .analysis-card {
+            background: white;
+            padding: 30px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+        }
+
+        .analysis-card h3 {
+            margin-bottom: 20px;
+            font-size: 18px;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .analysis-card ul li {
+            margin-bottom: 12px;
+            padding-left: 20px;
+            position: relative;
+            font-size: 15px;
+            color: var(--text-light);
+        }
+
+        .analysis-card ul li::before {
+            content: "•";
+            color: var(--primary-color);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            background: white;
+        }
+
+        .faq-grid {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 15px;
+        }
+
+        .faq-question {
+            padding: 20px 0;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 16px;
+        }
+
+        .faq-question::after {
+            content: "+";
+            font-size: 20px;
+            color: var(--primary-color);
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-question::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            color: var(--text-light);
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: #999;
+            padding: 60px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-wrapper nav {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .ranking-table th:nth-child(3),
+            .ranking-table td:nth-child(3) {
+                display: none;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container nav-wrapper">
+        <a href="#" class="logo">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/><path d="M14 6l-1 3"/><path d="M9 9l-1 3"/></svg>
+            <span>车质榜</span>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="#" class="active">排行榜</a></li>
+                <li><a href="#">品牌评测</a></li>
+                <li><a href="#">车型对比</a></li>
+                <li><a href="#">车主口碑</a></li>
+                <li><a href="#">选购指南</a></li>
+            </ul>
+        </nav>
+        <button class="mobile-menu-btn">☰</button>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="container">
+        <h1>国产汽车质量排行榜</h1>
+        <p>基于百万车主真实反馈与第三方权威检测数据，深度解析2024年国产汽车品牌可靠性。助您选购省心、耐用、高性价比的优质座驾。</p>
+        <div class="hero-stats">
+            <div class="stat-item">
+                <h3>100万+</h3>
+                <p>样本车主数据</p>
+            </div>
+            <div class="stat-item">
+                <h3>45+</h3>
+                <p>上榜国产品牌</p>
+            </div>
+            <div class="stat-item">
+                <h3>98%</h3>
+                <p>数据准确率</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="filter-bar">
+    <div class="container filter-content">
+        <button class="filter-btn active">综合榜单</button>
+        <button class="filter-btn">新能源专榜</button>
+        <button class="filter-btn">紧凑型轿车</button>
+        <button class="filter-btn">SUV</button>
+        <button class="filter-btn">MPV</button>
+    </div>
+</div>
+
+<main class="section-padding ranking-section">
+    <div class="container">
+        <div class="ranking-header">
+            <h2>2024年度国产汽车质量指数TOP10</h2>
+            <span class="data-source">数据来源：中国汽车质量网 / 2024年第一季度报告</span>
+        </div>
+
+        <table class="ranking-table">
+            <thead>
+                <tr>
+                    <th style="width: 80px;">排名</th>
+                    <th>品牌/车型</th>
+                    <th>故障率指数</th>
+                    <th>车主满意度</th>
+                    <th>近一年趋势</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span class="rank-num rank-1">1</span></td>
+                    <td>
+                        <div class="brand-info">
+                            <div class="brand-logo">BYD</div>
+                            <div>
+                                <div class="brand-name">比亚迪 (王朝/海洋)</div>
+                                <div style="font-size:12px; color:#666;">秦PLUS, 汉, 唐</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td><span class="score-badge score-high">125</span></td>
+                    <td>4.8/5.0</td>
+                    <td><span class="trend-up">▲ 2.1%</span></td>
+                </tr>
+                <tr>
+                    <td><span class="rank-num rank-2">2</span></td>
+                    <td>
+                        <div class="brand-info">
+                            <div class="brand-logo">长安</div>
+                            <div>
+                                <div class="brand-name">长安汽车 (UNI, CS系列)</div>
+                                <div style="font-size:12px; color:#666;">UNI-V, CS75 PLUS</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td><span class="score-badge score-high">132</span></td>
+                    <td>4.6/5.0</td>
+                    <td><span class="trend-up">▲ 1.5%</span></td>
+                </tr>
+                <tr>
+                    <td><span class="rank-num rank-3">3</span></td>
+                    <td>
+                        <div class="brand-info">
+                            <div class="brand-logo">吉利</div>
+                            <div>
+                                <div class="brand-name">吉利汽车 (星越, 博越)</div>
+                                <div style="font-size:12px; color:#666;">星越L, 博越L</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td><span class="score-badge score-high">138</span></td>
+                    <td>4.5/5.0</td>
+                    <td><span class="trend-down">▼ 0.8%</span></td>
+                </tr>
+                <tr>
+                    <td><span class="rank-num">4</span></td>
+                    <td>
+                        <div class="brand-info">
+                            <div class="brand-logo">奇瑞</div>
+                            <div>
+                                <div class="brand-name">奇瑞汽车 (捷途, 星途)</div>
+                                <div style="font-size:12px; color:#666;">瑞虎8, 瑞虎9</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td><span class="score-badge score-mid">145</span></td>
+                    <td>4.4/5.0</td>
+                    <td><span class="trend-up">▲ 0.5%</span></td>
+                </tr>
+                <tr>
+                    <td><span class="rank-num">5</span></td>
+                    <td>
+                        <div class="brand-info">
+                            <div class="brand-logo">领克</div>
+                            <div>
+                                <div class="brand-name">领克 (03+, 09)</div>
+                                <div style="font-size:12px; color:#666;">领克08 EM-P</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td><span class="score-badge score-mid">152</span></td>
+                    <td>4.7/5.0</td>
+                    <td><span class="trend-up">▲ 3.2%</span></td>
+                </tr>
+                <tr>
+                    <td><span class="rank-num">6</span></td>
+                    <td>
+                        <div class="brand-info">
+                            <div class="brand-logo">红旗</div>
+                            <div>
+                                <div class="brand-name">红旗 HS5, H5</div>
+                                <div style="font-size:12px; color:#666;">红旗E-HS9</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td><span class="score-badge score-mid">158</span></td>
+                    <td>4.6/5.0</td>
+                    <td><span class="trend-up">▲ 1.1%</span></td>
+                </tr>
+                <tr>
+                    <td><span class="rank-num">7</span></td>
+                    <td>
+                        <div class="brand-info">
+                            <div class="brand-logo">广汽传祺</div>
+                            <div>
+                                <div class="brand-name">传祺 (GS8, M8)</div>
+                                <div style="font-size:12px; color:#666;">影酷, GS8</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td><span class="score-badge score-mid">162</span></td>
+                    <td>4.5/5.0</td>
+                    <td><span class="trend-down">▼ 0.3%</span></td>
+                </tr>
+                <tr>
+                    <td><span class="rank-num">8</span></td>
+                    <td>
+                        <div class="brand-info">
+                            <div class="brand-logo">蔚来</div>
+                            <div>
+                                <div class="brand-name">蔚来 (ES6, EC6)</div>
+                                <div style="font-size:12px; color:#666;">ET5T</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td><span class="score-badge score-low">175</span></td>
+                    <td>4.9/5.0</td>
+                    <td><span class="trend-up">▲ 4.5%</span></td>
+                </tr>
+                <tr>
+                    <td><span class="rank-num">9</span></td>
+                    <td>
+                        <div class="brand-info">
+                            <div class="brand-logo">小鹏</div>
+                            <div>
+                                <div class="brand-name">小鹏 (G6, G9)</div>
+                                <div style="font-size:12px; color:#666;">P7i</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td><span class="score-badge score-low">182</span></td>
+                    <td>4.7/5.0</td>
+                    <td><span class="trend-down">▼ 1.2%</span></td>
+                </tr>
+                <tr>
+                    <td><span class="rank-num">10</span></td>
+                    <td>
+                        <div class="brand-info">
+                            <div class="brand-logo">零跑</div>
+                            <div>
+                                <div class="brand-name">零跑 (C11, C10)</div>
+                                <div style="font-size:12px; color:#666;">S01</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td><span class="score-badge score-low">190</span></td>
+                    <td>4.5/5.0</td>
+                    <td><span class="trend-up">▲ 5.0%</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+
+<section class="section-padding analysis-section">
+    <div class="container">
+        <div class="text-center" style="margin-bottom: 50px;">
+            <h2 style="font-size: 24px; margin-bottom: 10px;">国产车质量趋势分析</h2>
+            <p style="color: var(--text-light);">深入解读榜单背后的技术变革与市场反馈</p>
+        </div>
+        <div class="analysis-grid">
+            <article class="analysis-card">
+                <h3>🚀 新能源领跑</h3>
+                <p style="margin-bottom: 15px; color: #666;">榜单显示，比亚迪在新能源领域表现强势，故障率指数显著低于传统燃油车平均水平。</p>
+                <ul>
+                    <li>电池系统稳定性大幅提升</li>
+                    <li>电驱系统故障率下降15%</li>
+                    <li>智能化配置不再拉低可靠性</li>
+                </ul>
+            </article>
+            <article class="analysis-card">
+                <h3>🔧 传统品牌转型</h3>
+                <p style="margin-bottom: 15px; color: #666;">长安、吉利等传统车企通过技术升级，在底盘调教和发动机可靠性上取得突破。</p>
+                <ul>
+                    <li>混动技术成熟度提高</li>
+                    <li>车身工艺精细化</li>
+                    <li>售后服务网络覆盖优化</li>
+                </ul>
+            </article>
+            <article class="analysis-card">
+                <h3>⚠️ 需要注意的领域</h3>
+                <p style="margin-bottom: 15px; color: #666;">部分新势力品牌虽然智能化体验出色，但在电子元器件的耐久性测试中仍需加强。</p>
+                <ul>
+                    <li>车机系统偶发性死机</li>
+                    <li>传感器误报率较高</li>
+                    <li>车身异响问题偶有反馈</li>
+                </ul>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="section-padding faq-section">
+    <div class="container">
+        <h2 style="text-align: center; margin-bottom: 40px; font-size: 24px;">常见问题解答</h2>
+        <div class="faq-grid">
+            <div class="faq-item">
+                <div class="faq-question">国产车质量真的比合资车好吗？</div>
+                <div class="faq-answer">
+                    数据显示，近年来国产车在核心零部件（如发动机、变速箱）的国产化率已大幅提升，整体故障率已与部分合资品牌持平。在配置丰富度和性价比方面，国产车具有明显优势。
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">榜单中的故障率是如何计算的？</div>
+                <div class="faq-answer">
+                    故障率指数基于中国汽车质量网收集的百万辆新车交付后的用户投诉数据、维修记录及第三方检测报告综合计算得出。数值越低代表质量越稳定。
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">买国产车保值率怎么样？</div>
+                <div class="faq-answer">
+                    随着国产车品质提升，保值率正在逐年上涨。尤其是热门新能源车型和销量高的传统车型，二手车市场认可度较高。建议关注品牌口碑和车龄较新的车型。
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">新能源车与传统燃油车怎么选？</div>
+                <div class="faq-answer">
+                    如果主要在城市通勤且具备充电条件，新能源车（混动或纯电）使用成本低且驾驶体验好。如果经常跑长途或充电不便，混动或燃油车依然是可靠的选择。
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>关于我们</h4>
+                <p style="font-size: 14px; line-height: 1.8;">车质榜致力于提供客观、公正、专业的汽车质量评测数据，帮助消费者做出明智的购车决策。</p>
+            </div>
+            <div class="footer-col">
+                <h4>快速链接</h4>
+                <ul>
+                    <li><a href="#">排行榜</a></li>
+                    <li><a href="#">车型评测</a></li>
+                    <li><a href="#">用车知识</a></li>
+                    <li><a href="#">投诉建议</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>关注我们</h4>
+                <ul>
+                    <li><a href="#">微信公众号</a></li>
+                    <li><a href="#">官方微博</a></li>
+                    <li><a href="#">用户交流群</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2024 车质榜. All Rights Reserved. 本站数据仅供参考，请以官方发布为准。</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // FAQ Toggle Logic
+    document.querySelectorAll('.faq-question').forEach(item => {
+        item.addEventListener('click', event => {
+            const parent = item.parentElement;
+            const isActive = parent.classList.contains('active');
+            
+            // Close all other items
+            document.querySelectorAll('.faq-item').forEach(faq => {
+                faq.classList.remove('active');
+            });
+
+            // Toggle current item
+            if (!isActive) {
+                parent.classList.add('active');
+            }
+        });
+    });
+
+    // Mobile Menu Toggle
+    const mobileBtn = document.querySelector('.mobile-menu-btn');
+    const nav = document.querySelector('nav ul');
+    
+    mobileBtn.addEventListener('click', () => {
+        if (nav.style.display === 'flex') {
+            nav.style.display = 'none';
+        } else {
+            nav.style.display = 'flex';
+            nav.style.flexDirection = 'column';
+            nav.style.position = 'absolute';
+            nav.style.top = '70px';
+            nav.style.left = '0';
+            nav.style.width = '100%';
+            nav.style.background = 'white';
+            nav.style.padding = '20px';
+            nav.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
+        }
+    });
+</script>
+
+</body>
+  </html>
