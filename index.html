@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="韩三千小说在线阅读，讲述都市豪门世家韩三千的崛起之路。提供韩三千章节列表、人物介绍及小说精彩片段。">
+    <meta name="keywords" content="韩三千,都市小说,韩三千小说,韩三千在线阅读,豪门小说">
+    <title>韩三千-都市豪门小说在线阅读与人物介绍</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #c0392b;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --bg-color: #f9f9f9;
+            --card-bg: #ffffff;
+            --text-main: #333333;
+            --text-light: #7f8c8d;
+            --border-radius: 8px;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Layout */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--card-bg);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+        }
+
+        .logo span {
+            color: var(--secondary-color);
+            margin-left: 5px;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-weight: 500;
+            color: var(--secondary-color);
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-color);
+        }
+
+        .header-actions button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+
+        .header-actions button:hover {
+            background-color: var(--accent-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #2c3e50 0%, #4ca1af 100%);
+            color: white;
+            padding: 60px 0;
+            margin-bottom: 40px;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-tag {
+            background-color: rgba(255,255,255,0.2);
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 16px;
+            opacity: 0.9;
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: transform 0.2s, background 0.3s;
+        }
+
+        .hero-btn:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        .hero-book-cover {
+            flex: 0 0 300px;
+            height: 420px;
+            background-color: #ddd;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-book-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Section Titles */
+        .section-title {
+            font-size: 24px;
+            margin-bottom: 25px;
+            padding-left: 15px;
+            border-left: 5px solid var(--primary-color);
+            color: var(--secondary-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .more-link {
+            font-size: 14px;
+            color: var(--text-light);
+            font-weight: normal;
+        }
+
+        .more-link:hover {
+            color: var(--primary-color);
+        }
+
+        /* Chapter List */
+        .chapter-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+
+        .chapter-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            box-shadow: var(--shadow);
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+
+        .chapter-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+            border-color: var(--primary-color);
+        }
+
+        .chapter-card h3 {
+            font-size: 16px;
+            margin-bottom: 10px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .chapter-card .meta {
+            font-size: 12px;
+            color: var(--text-light);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Character Info */
+        .character-section {
+            background-color: var(--card-bg);
+            padding: 50px 0;
+            margin-bottom: 50px;
+        }
+
+        .character-container {
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+        }
+
+        .character-avatar {
+            flex: 0 0 200px;
+            text-align: center;
+        }
+
+        .avatar-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 4px solid var(--primary-color);
+            margin-bottom: 15px;
+            object-fit: cover;
+        }
+
+        .character-info h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .character-tags span {
+            display: inline-block;
+            background-color: #f0f2f5;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            margin-right: 8px;
+            color: var(--text-light);
+        }
+
+        /* Synopsis */
+        .synopsis-box {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 50px;
+            border-top: 4px solid var(--secondary-color);
+        }
+
+        .synopsis-box h2 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+
+        .synopsis-box p {
+            text-indent: 2em;
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            color: #bdc3c7;
+            padding: 50px 0 20px;
+            font-size: 14px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-direction: column;
+                height: auto;
+                padding: 15px 0;
+            }
+
+            nav ul {
+                margin: 15px 0;
+                gap: 15px;
+                font-size: 14px;
+            }
+
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero p {
+                margin: 0 auto 30px;
+            }
+
+            .hero-book-cover {
+                width: 100%;
+                max-width: 250px;
+                height: 350px;
+                margin: 0 auto;
+            }
+
+            .character-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .character-avatar {
+                flex: 0 0 auto;
+            }
+
+            .character-tags {
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-inner">
+            <a href="#" class="logo">韩三千 <span>阅读网</span></a>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#">章节目录</a></li>
+                    <li><a href="#">人物介绍</a></li>
+                    <li><a href="#">读者评论</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <button>加入书架</button>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <span class="hero-tag">都市豪门</span>
+                <h1>韩三千：为了报恩，隐忍三年，一朝崛起</h1>
+                <p>这是一部关于都市隐忍、逆袭与责任的小说。主角韩三千在家族没落之际，为了报答苏家大少之恩，甘愿做上门女婿三年。三年期满，他如何打破桎梏，夺回属于自己的一切？</p>
+                <a href="#" class="hero-btn">立即阅读</a>
+            </div>
+            <div class="hero-book-cover">
+                <img src="https://picsum.photos/seed/hansanqian/300/420" alt="韩三千小说封面">
+            </div>
+        </div>
+    </section>
+
+    <main class="container">
+        
+        <!-- 小说简介 -->
+        <section class="synopsis-box">
+            <h2>小说简介</h2>
+            <p>《韩三千》是一部经典的都市豪门类网络小说。故事讲述了主角韩三千从一名默默无闻的上门女婿，一步步成长为都市商界巨擘的故事。</p>
+            <p>韩三千本是韩家旁支子弟，因家族没落，为了报答苏家大少当年的救命之恩，甘愿背负“赘婿”之名，隐忍三年。这三年里，他不仅要忍受外界的白眼与冷嘲热讽，还要在苏家复杂的内部关系中周旋。然而，三年之期已到，韩三千的隐藏实力逐渐浮出水面，他开始重新掌控自己的命运，揭开当年的真相，并一步步走上人生巅峰。</p>
+        </section>
+
+        <!-- 热门章节 -->
+        <section>
+            <div class="section-title">
+                <h3>热门章节</h3>
+                <a href="#" class="more-link">查看全部章节 &raquo;</a>
+            </div>
+            <div class="chapter-grid">
+                <article class="chapter-card">
+                    <h3>第一千三百章：最后的晚餐</h3>
+                    <div class="meta">
+                        <span>更新时间：2023-10-15</span>
+                        <span>热度：99%</span>
+                    </div>
+                </article>
+                <article class="chapter-card">
+                    <h3>第一千三百零一章：尘埃落定</h3>
+                    <div class="meta">
+                        <span>更新时间：2023-10-14</span>
+                        <span>热度：98%</span>
+                    </div>
+                </article>
+                <article class="chapter-card">
+                    <h3>第一千三百章：最后的晚餐</h3>
+                    <div class="meta">
+                        <span>更新时间：2023-10-13</span>
+                        <span>热度：97%</span>
+                    </div>
+                </article>
+                <article class="chapter-card">
+                    <h3>第一千三百零二章：新的篇章</h3>
+                    <div class="meta">
+                        <span>更新时间：2023-10-12</span>
+                        <span>热度：95%</span>
+                    </div>
+                </article>
+                <article class="chapter-card">
+                    <h3>第一千三百零三章：家族的荣耀</h3>
+                    <div class="meta">
+                        <span>更新时间：2023-10-11</span>
+                        <span>热度：94%</span>
+                    </div>
+                </article>
+                <article class="chapter-card">
+                    <h3>第一千三百零四章：风云再起</h3>
+                    <div class="meta">
+                        <span>更新时间：2023-10-10</span>
+                        <span>热度：93%</span>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- 人物介绍 -->
+        <section class="character-section">
+            <div class="section-title">
+                <h3>主要人物</h3>
+            </div>
+            <div class="character-container">
+                <div class="character-avatar">
+                    <img src="https://picsum.photos/seed/hansanqian/200/200" alt="韩三千头像" class="avatar-img">
+                    <h4>韩三千</h4>
+                    <span style="font-size: 12px; color: var(--text-light);">男主角</span>
+                </div>
+                <div class="character-info">
+                    <h3>韩三千</h3>
+                    <div class="character-tags">
+                        <span>韩家旁支</span>
+                        <span>苏家赘婿</span>
+                        <span>商业奇才</span>
+                        <span>隐忍坚毅</span>
+                    </div>
+                    <p style="margin-top: 15px; color: #666;">韩三千性格沉稳，拥有极高的商业天赋和深不可测的背景。在家族没落时，他选择隐姓埋名，以赘婿身份在苏家度过三年，只为报答当年的恩情。他善于布局，步步为营，是典型的“扮猪吃老虎”型人物。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 阅读指南 -->
+        <section>
+            <div class="section-title">
+                <h3>阅读指南</h3>
+            </div>
+            <div style="background: white; padding: 30px; border-radius: 8px; box-shadow: var(--shadow);">
+                <ul style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                    <li>
+                        <strong style="display: block; color: var(--primary-color); margin-bottom: 5px;">1. 小说背景</strong>
+                        <p style="font-size: 14px; color: #666;">小说背景设定在现代都市，主要围绕豪门恩怨、商业竞争展开。</p>
+                    </li>
+                    <li>
+                        <strong style="display: block; color: var(--primary-color); margin-bottom: 5px;">2. 人物关系</strong>
+                        <p style="font-size: 14px; color: #666;">主要讲述了韩三千与妻子苏清河、岳父苏家大少之间的复杂关系。</p>
+                    </li>
+                    <li>
+                        <strong style="display: block; color: var(--primary-color); margin-bottom: 5px;">3. 阅读提示</strong>
+                        <p style="font-size: 14px; color: #666;">本站提供正版章节阅读，请支持作者原创，请勿传播盗版内容。</p>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>关于本站</h4>
+                    <p>韩三千阅读网致力于为用户提供优质的都市小说阅读体验，涵盖热门连载、完结经典及独家首发内容。</p>
+                </div>
+                <div class="footer-col">
+                    <h4>快速导航</h4>
+                    <ul>
+                        <li><a href="#">首页</a></li>
+                        <li><a href="#">排行榜</a></li>
+                        <li><a href="#">分类书库</a></li>
+                        <li><a href="#">作者专区</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>相关小说</h4>
+                    <ul>
+                        <li><a href="#">都市之最强狂兵</a></li>
+                        <li><a href="#">神级赘婿</a></li>
+                        <li><a href="#">神医下山</a></li>
+                        <li><a href="#">极品透视眼</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 韩三千阅读网 版权所有. 本站内容仅供学习交流使用.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
