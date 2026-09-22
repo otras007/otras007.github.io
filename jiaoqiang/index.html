@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="胶枪专业选购指南，涵盖热熔胶枪、电动胶枪、工业级胶枪的对比评测、安全使用技巧、常见故障排除及配件推荐。">
+    <meta name="keywords" content="胶枪, 热熔胶枪, 电动胶枪, 手动胶枪, DIY工具, 工业胶枪">
+    <title>胶枪-专业热熔胶枪选购指南与使用教程</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #d35400;
+            --primary-hover: #e67e22;
+            --secondary-color: #2c3e50;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-main: #333333;
+            --text-light: #666666;
+            --border-radius: 8px;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-main);
+            background-color: var(--bg-color);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--card-bg);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 20px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--secondary-color);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            font-weight: 500;
+            color: var(--secondary-color);
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        .cta-btn {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1.2rem;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+        }
+
+        .cta-btn:hover {
+            background-color: var(--primary-hover);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+            padding: 4rem 20px;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: var(--container-width);
+            margin: 2rem auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+        }
+
+        /* Section Styles */
+        section {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #eee;
+            color: var(--secondary-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Product Comparison Grid */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .product-card {
+            border: 1px solid #eee;
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background-color: var(--primary-color);
+        }
+
+        .card-tag {
+            background-color: #ffe0b2;
+            color: var(--primary-color);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .product-title {
+            font-size: 1.25rem;
+            margin: 0.5rem 0;
+            color: var(--secondary-color);
+        }
+
+        .product-desc {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .feature-list li {
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .feature-list li::before {
+            content: '✓';
+            color: var(--primary-color);
+            margin-right: 8px;
+            font-weight: bold;
+        }
+
+        /* Guide List */
+        .guide-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .guide-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem;
+            border: 1px solid #eee;
+            border-radius: var(--border-radius);
+            align-items: flex-start;
+        }
+
+        .guide-icon {
+            background-color: #e3f2fd;
+            color: #1976d2;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .guide-content h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .guide-content p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* FAQ Accordion */
+        .faq-item {
+            border-bottom: 1px solid #eee;
+            padding: 1rem 0;
+        }
+
+        .faq-question {
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 1.2rem;
+            color: var(--primary-color);
+        }
+
+        .faq-answer {
+            margin-top: 0.8rem;
+            color: var(--text-light);
+            font-size: 0.95rem;
+            display: none; /* JS will toggle */
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-item.active .faq-question::after {
+            content: '-';
+        }
+
+        /* Sidebar Widget */
+        .sidebar-widget {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+        }
+
+        .sidebar-widget h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+
+        .checklist {
+            counter-reset: checklist;
+        }
+
+        .checklist li {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+            color: var(--text-main);
+        }
+
+        .checklist li::before {
+            counter-increment: checklist;
+            content: counter(checklist);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 24px;
+            height: 24px;
+            background-color: var(--secondary-color);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 24px;
+            font-size: 0.8rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            color: #bdc3c7;
+            padding: 3rem 20px;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-col ul li a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                gap: 15px;
+                font-size: 0.9rem;
+            }
+
+            .container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
+                    <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
+                    <path d="M2 2l7.586 7.586"></path>
+                    <circle cx="11" cy="11" r="2"></circle>
+                </svg>
+                胶枪<span>优选指南</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#types">类型对比</a></li>
+                    <li><a href="#guide">选购指南</a></li>
+                    <li><a href="#usage">安全使用</a></li>
+                    <li><a href="#faq">常见问题</a></li>
+                </ul>
+            </nav>
+            <a href="#guide" class="cta-btn">开始选购</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>胶枪选购与使用全攻略</h1>
+                <p>无论是家庭DIY手工制作，还是工业精密组装，选择合适的胶枪是成功的关键。我们为您提供专业的类型解析、安全操作指南及配件选购建议。</p>
+            </div>
+        </section>
+
+        <div class="container">
+            <!-- Left Content -->
+            <div class="content-area">
+                
+                <!-- Product Types -->
+                <section id="types">
+                    <div class="section-title">
+                        <h2>胶枪类型对比</h2>
+                        <span class="card-tag">工具分类</span>
+                    </div>
+                    <div class="comparison-grid">
+                        <article class="product-card">
+                            <h3 class="product-title">手动胶枪</h3>
+                            <span class="card-tag">入门首选</span>
+                            <p class="product-desc">通过活塞压缩空气产生热量，无需电源，适合轻度粘合和临时固定。</p>
+                            <ul class="feature-list">
+                                <li>价格低廉，操作简单</li>
+                                <li>无电力消耗</li>
+                                <li>粘合力适中</li>
+                                <li>适合学生和业余爱好者</li>
+                            </ul>
+                        </article>
+
+                        <article class="product-card">
+                            <h3 class="product-title">电动胶枪</h3>
+                            <span class="card-tag">主流推荐</span>
+                            <p class="product-desc">内置加热元件，通电后快速预热，出胶稳定连续，粘合强度高。</p>
+                            <ul class="feature-list">
+                                <li>加热速度快 (约3分钟)</li>
+                                <li>出胶均匀连续</li>
+                                <li>可调节温度</li>
+                                <li>适合布艺、木材、金属粘合</li>
+                            </ul>
+                        </article>
+
+                        <article class="product-card">
+                            <h3 class="product-title">工业级胶枪</h3>
+                            <span class="card-tag">专业重型</span>
+                            <p class="product-desc">大功率加热，耐高温胶棒，适合大面积快速粘合及特殊材料作业。</p>
+                            <ul class="feature-list">
+                                <li>功率大，升温极快</li>
+                                <li>支持重型胶棒</li>
+                                <li>适合户外和严苛环境</li>
+                                <li>需配合专用支架使用</li>
+                            </ul>
+                        </article>
+                    </div>
+                </section>
+
+                <!-- Usage Guide -->
+                <section id="guide">
+                    <div class="section-title">
+                        <h2>选购与使用指南</h2>
+                    </div>
+                    <div class="guide-list">
+                        <div class="guide-item">
+                            <div class="guide-icon">1</div>
+                            <div class="guide-content">
+                                <h3>确定使用场景</h3>
+                                <p>如果是进行手工折纸、贺卡制作，选择功率适中（40W-60W）的电动胶枪即可；如果是装修固定或大面积粘合，建议选择100W以上的工业胶枪。</p>
+                            </div>
+                        </div>
+                        <div class="guide-item">
+                            <div class="guide-icon">2</div>
+                            <div class="guide-content">
+                                <h3>检查安全认证</h3>
+                                <p>购买时注意查看产品是否有3C认证或CE认证。优质的胶枪外壳材质应为阻燃ABS工程塑料，防止高温烫伤。</p>
+                            </div>
+                        </div>
+                        <div class="guide-item">
+                            <div class="guide-icon">3</div>
+                            <div class="guide-content">
+                                <h3>了解胶棒规格</h3>
+                                <p>市面上最常见的胶棒直径为11mm。购买时需确认胶枪口径与胶棒直径完全匹配，否则无法出胶。</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Safety & Maintenance -->
+                <section id="usage">
+                    <div class="section-title">
+                        <h2>安全操作与维护</h2>
+                    </div>
+                    <article class="product-card">
+                        <h3 class="product-title">安全注意事项</h3>
+                        <p style="margin-bottom: 1rem; color: var(--text-light);">胶枪工作温度通常在200°C左右，请务必注意以下事项：</p>
+                        <ul class="feature-list">
+                            <li>使用时远离儿童和易燃物。</li>
+                            <li>切勿将胶枪浸入水中冷却，应自然冷却。</li>
+                            <li>长时间不使用时，请拔掉电源并倒出剩余胶棒。</li>
+                            <li>操作时佩戴隔热手套，防止热熔胶飞溅烫伤。</li>
+                        </ul>
+                    </article>
+                </section>
+            </div>
+
+            <!-- Right Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-widget">
+                    <h3>选购清单</h3>
+                    <ul class="checklist">
+                        <li>确认胶枪口径与胶棒直径一致</li>
+                        <li>优先选择带断电自动保护的型号</li>
+                        <li>检查枪嘴是否易于清洁</li>
+                        <li>确认是否包含防烫手枪夹</li>
+                        <li>查看保修期限及售后服务</li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-widget">
+                    <h3>常见故障排除</h3>
+                    <div class="faq-item">
+                        <div class="faq-question">胶枪不出胶怎么办？</div>
+                        <div class="faq-answer">首先检查胶棒是否已用完。其次，检查枪嘴是否堵塞，可用烧红的铁丝疏通。最后，确认是否已充分预热。</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">胶枪一直加热不停机？</div>
+                        <div class="faq-answer">这通常是温控器故障或感应探针接触不良。请立即切断电源，停止使用并联系售后维修。</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">如何清理残留胶水？</div>
+                        <div class="faq-answer">趁热用专用清洁棒或硬纸片刮除。冷却后可用酒精或专用清洁剂浸泡枪嘴溶解胶水。</div>
+                    </div>
+                </div>
+
+                <div class="sidebar-widget" style="background-color: #fff8e1; border: 1px solid #ffe082;">
+                    <h3>温馨提示</h3>
+                    <p style="font-size: 0.9rem; color: #795548;">胶枪属于热力工具，使用不当存在烫伤风险。请务必按照说明书操作，并在使用后妥善存放。</p>
+                </div>
+            </aside>
+        </div>
+
+        <!-- FAQ Section -->
+        <section id="faq">
+            <div class="section-title">
+                <h2>常见问题解答</h2>
+            </div>
+            <div style="max-width: 800px; margin: 0 auto;">
+                <div class="faq-item">
+                    <div class="faq-question">手动胶枪和电动胶枪哪个好用？</div>
+                    <div class="faq-answer">电动胶枪在出胶速度、粘合强度和稳定性上远优于手动胶枪。手动胶枪仅适合偶尔使用的临时固定，不建议用于精密手工或需要强粘合力的场景。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">胶枪可以粘哪些材料？</div>
+                    <div class="faq-answer">热熔胶枪适用范围广泛，包括木材、纸品、布料、塑料、金属、陶瓷等。但不同材质对温度要求不同，建议根据粘合材料选择合适的胶棒类型（如高强度、防水型）。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">使用胶枪时需要戴手套吗？</div>
+                    <div class="faq-answer">强烈建议佩戴隔热手套。热熔胶流出时温度极高，且容易在皮肤上凝固造成烫伤。虽然胶枪通常带有枪夹，但在操作过程中仍存在飞溅风险。</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <div class="logo" style="margin-bottom: 1rem; color: white;">
+                    胶枪<span>优选指南</span>
+                </div>
+                <p style="font-size: 0.9rem; opacity: 0.8;">致力于为DIY爱好者及专业人士提供最详尽的胶枪选购与使用资讯。</p>
+            </div>
+            <div class="footer-col">
+                <h4>快速链接</h4>
+                <ul>
+                    <li><a href="#types">类型对比</a></li>
+                    <li><a href="#guide">选购指南</a></li>
+                    <li><a href="#usage">安全使用</a></li>
+                    <li><a href="#faq">常见问题</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>相关工具</h4>
+                <ul>
+                    <li><a href="#">美工刀</a></li>
+                    <li><a href="#">剪刀</a></li>
+                    <li><a href="#">双面胶</a></li>
+                    <li><a href="#">胶带切割器</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2023 胶枪优选指南. All Rights Reserved.
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Accordion Logic
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    // Close other items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    // Toggle current item
+                    item.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
