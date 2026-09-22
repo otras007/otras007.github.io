@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="魔兽世界人口普查网站，提供最新服务器种族职业分布统计、人口趋势分析、稀有坐骑掉落率调查及玩家社区互动数据。">
+    <meta name="keywords" content="魔兽人口普查,魔兽世界数据,种族职业分布,服务器人口统计,稀有坐骑掉落">
+    <title>魔兽人口普查-全球服务器种族职业分布与稀有数据统计</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --bg-body: #121212;
+            --bg-card: #1e1e1e;
+            --bg-card-hover: #252525;
+            --text-main: #e0e0e0;
+            --text-muted: #a0a0a0;
+            --accent-primary: #0070dd; /* Classic Blue */
+            --accent-secondary: #ff8000; /* Gold/Orange */
+            --accent-danger: #ff4444;
+            --border-color: #333;
+            --font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Utility */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #005bb5;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--accent-primary);
+            color: var(--accent-primary);
+        }
+
+        .btn-outline:hover {
+            background-color: rgba(0, 112, 221, 0.1);
+        }
+
+        .badge {
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .badge-new { background-color: var(--accent-secondary); color: #000; }
+        .badge-hot { background-color: #c62828; color: white; }
+
+        /* Header */
+        header {
+            background-color: rgba(18, 18, 18, 0.95);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 0;
+            backdrop-filter: blur(10px);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--accent-primary);
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--text-main);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            font-size: 15px;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--text-main);
+        }
+
+        .search-box {
+            display: flex;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 5px 15px;
+        }
+
+        .search-box input {
+            background: transparent;
+            border: none;
+            color: var(--text-main);
+            outline: none;
+            width: 150px;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)), url('https://picsum.photos/seed/wowhero/1920/600') no-repeat center center/cover;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .stat-item h3 {
+            font-size: 2rem;
+            color: var(--accent-secondary);
+        }
+
+        .stat-item p {
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        /* Main Content */
+        main {
+            padding: 40px 0;
+        }
+
+        .section-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 25px;
+            border-left: 4px solid var(--accent-primary);
+            padding-left: 15px;
+        }
+
+        .section-title h2 {
+            font-size: 1.8rem;
+            color: var(--text-main);
+        }
+
+        .section-title a {
+            font-size: 14px;
+            color: var(--accent-primary);
+        }
+
+        /* Server Grid */
+        .server-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .server-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            transition: transform 0.2s, border-color 0.2s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .server-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--accent-primary);
+        }
+
+        .server-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .server-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .server-pop {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .pop-bar-container {
+            height: 6px;
+            background-color: #333;
+            border-radius: 3px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .pop-bar {
+            height: 100%;
+            background-color: var(--accent-primary);
+            border-radius: 3px;
+        }
+
+        .race-stats {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .race-row {
+            display: flex;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+
+        .race-label {
+            width: 60px;
+            color: var(--text-muted);
+        }
+
+        .race-track {
+            flex: 1;
+            height: 8px;
+            background: #333;
+            border-radius: 4px;
+            margin: 0 10px;
+            overflow: hidden;
+        }
+
+        .race-fill {
+            height: 100%;
+            background: var(--accent-secondary);
+        }
+
+        /* Class Distribution Section */
+        .class-section {
+            background-color: var(--bg-card);
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 40px;
+        }
+
+        .class-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .class-item {
+            text-align: center;
+            padding: 15px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 6px;
+            transition: background 0.2s;
+        }
+
+        .class-item:hover {
+            background: rgba(255,255,255,0.08);
+        }
+
+        .class-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .class-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .class-percent {
+            font-size: 1.1rem;
+            color: var(--accent-primary);
+        }
+
+        /* Rarity Table */
+        .rarity-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .rarity-table th, .rarity-table td {
+            text-align: left;
+            padding: 12px 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .rarity-table th {
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .rarity-table tr:hover {
+            background-color: rgba(255,255,255,0.02);
+        }
+
+        /* FAQ */
+        .faq-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .faq-item {
+            background: var(--bg-card);
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .faq-item h4 {
+            color: var(--accent-primary);
+            margin-bottom: 10px;
+        }
+
+        .faq-item p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #0a0a0a;
+            border-top: 1px solid var(--border-color);
+            padding: 40px 0 20px;
+            margin-top: 60px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .footer-brand p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 10px;
+            max-width: 300px;
+        }
+
+        .footer-col h5 {
+            color: var(--text-main);
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--accent-primary);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #222;
+            color: #555;
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .nav-links { display: none; } /* Simplified mobile nav */
+            .faq-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; gap: 30px; }
+            .search-box input { width: 100px; }
+            .hero-stats { flex-direction: column; gap: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-inner">
+            <a href="#" class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                </svg>
+                魔兽<span>人口普查</span>
+            </a>
+            <nav class="nav-links">
+                <ul>
+                    <li><a href="#" class="active">服务器普查</a></li>
+                    <li><a href="#">稀有坐骑</a></li>
+                    <li><a href="#">职业分布</a></li>
+                    <li><a href="#">排行榜</a></li>
+                    <li><a href="#">关于我们</a></li>
+                </ul>
+            </nav>
+            <div class="search-box">
+                <input type="text" placeholder="搜索服务器或数据...">
+                <button class="btn btn-primary" style="padding: 5px 12px; font-size: 12px;">搜索</button>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>探索艾泽拉斯的数字脉搏</h1>
+            <p>魔兽世界人口普查致力于提供最精准、最及时的全球服务器种族职业分布数据、稀有掉落统计及玩家行为分析。</p>
+            <div style="margin-top: 20px;">
+                <button class="btn btn-primary">开始普查</button>
+                <button class="btn btn-outline" style="margin-left: 10px;">查看榜单</button>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <h3>12,450</h3>
+                    <p>统计活跃角色数</p>
+                </div>
+                <div class="stat-item">
+                    <h3>850+</h3>
+                    <p>覆盖服务器数量</p>
+                </div>
+                <div class="stat-item">
+                    <h3>24h</h3>
+                    <p>数据实时更新</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main class="container">
+        <!-- Server Section -->
+        <section>
+            <div class="section-title">
+                <h2>热门服务器人口普查</h2>
+                <a href="#">查看全部服务器 &rarr;</a>
+            </div>
+            <div class="server-grid">
+                <!-- Server Card 1 -->
+                <div class="server-card">
+                    <div class="server-header">
+                        <span class="server-name">诺森德之巅</span>
+                        <span class="badge badge-hot">PVP</span>
+                    </div>
+                    <div class="pop-bar-container">
+                        <div class="pop-bar" style="width: 92%;"></div>
+                    </div>
+                    <div class="race-stats">
+                        <div class="race-row">
+                            <span class="race-label">人类</span>
+                            <div class="race-track"><div class="race-fill" style="width: 15%;"></div></div>
+                            <span style="width: 40px; text-align:right;">15%</span>
+                        </div>
+                        <div class="race-row">
+                            <span class="race-label">兽人</span>
+                            <div class="race-track"><div class="race-fill" style="width: 12%;"></div></div>
+                            <span style="width: 40px; text-align:right;">12%</span>
+                        </div>
+                        <div class="race-row">
+                            <span class="race-label">暗夜</span>
+                            <div class="race-track"><div class="race-fill" style="width: 10%;"></div></div>
+                            <span style="width: 40px; text-align:right;">10%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Server Card 2 -->
+                <div class="server-card">
+                    <div class="server-header">
+                        <span class="server-name">黑石山</span>
+                        <span class="badge badge-new">怀旧服</span>
+                    </div>
+                    <div class="pop-bar-container">
+                        <div class="pop-bar" style="width: 88%; background-color: var(--accent-secondary);"></div>
+                    </div>
+                    <div class="race-stats">
+                        <div class="race-row">
+                            <span class="race-label">亡灵</span>
+                            <div class="race-track"><div class="race-fill" style="width: 20%;"></div></div>
+                            <span style="width: 40px; text-align:right;">20%</span>
+                        </div>
+                        <div class="race-row">
+                            <span class="race-label">牛头</span>
+                            <div class="race-track"><div class="race-fill" style="width: 18%;"></div></div>
+                            <span style="width: 40px; text-align:right;">18%</span>
+                        </div>
+                        <div class="race-row">
+                            <span class="race-label">矮人</span>
+                            <div class="race-track"><div class="race-fill" style="width: 12%;"></div></div>
+                            <span style="width: 40px; text-align:right;">12%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Server Card 3 -->
+                <div class="server-card">
+                    <div class="server-header">
+                        <span class="server-name">翡翠梦境</span>
+                        <span class="badge">PVE</span>
+                    </div>
+                    <div class="pop-bar-container">
+                        <div class="pop-bar" style="width: 65%;"></div>
+                    </div>
+                    <div class="race-stats">
+                        <div class="race-row">
+                            <span class="race-label">德莱尼</span>
+                            <div class="race-track"><div class="race-fill" style="width: 14%;"></div></div>
+                            <span style="width: 40px; text-align:right;">14%</span>
+                        </div>
+                        <div class="race-row">
+                            <span class="race-label">血精灵</span>
+                            <div class="race-track"><div class="race-fill" style="width: 13%;"></div></div>
+                            <span style="width: 40px; text-align:right;">13%</span>
+                        </div>
+                        <div class="race-row">
+                            <span class="race-label">巨魔</span>
+                            <div class="race-track"><div class="race-fill" style="width: 11%;"></div></div>
+                            <span style="width: 40px; text-align:right;">11%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Class Distribution -->
+        <section>
+            <div class="section-title">
+                <h2>全服职业分布趋势</h2>
+                <a href="#">查看完整图表 &rarr;</a>
+            </div>
+            <div class="class-section">
+                <div class="class-grid">
+                    <div class="class-item">
+                        <span class="class-icon">⚔️</span>
+                        <div class="class-name">战士</div>
+                        <div class="class-percent">18.5%</div>
+                    </div>
+                    <div class="class-item">
+                        <span class="class-icon">🧙‍♂️</span>
+                        <div class="class-name">法师</div>
+                        <div class="class-percent">15.2%</div>
+                    </div>
+                    <div class="class-item">
+                        <span class="class-icon">🏹</span>
+                        <div class="class-name">猎人</div>
+                        <div class="class-percent">14.8%</div>
+                    </div>
+                    <div class="class-item">
+                        <span class="class-icon">💀</span>
+                        <div class="class-name">死亡骑士</div>
+                        <div class="class-percent">12.1%</div>
+                    </div>
+                    <div class="class-item">
+                        <span class="class-icon">🛡️</span>
+                        <div class="class-name">圣骑士</div>
+                        <div class="class-percent">11.4%</div>
+                    </div>
+                    <div class="class-item">
+                        <span class="class-icon">🔮</span>
+                        <div class="class-name">术士</div>
+                        <div class="class-percent">9.3%</div>
+                    </div>
+                    <div class="class-item">
+                        <span class="class-icon">🧝</span>
+                        <div class="class-name">德鲁伊</div>
+                        <div class="class-percent">8.9%</div>
+                    </div>
+                    <div class="class-item">
+                        <span class="class-icon">🧙‍♀️</span>
+                        <div class="class-name">牧师</div>
+                        <div class="class-percent">9.8%</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Rarity Data Table -->
+        <section>
+            <div class="section-title">
+                <h2>稀有坐骑掉落率统计</h2>
+            </div>
+            <div class="class-section">
+                <table class="rarity-table">
+                    <thead>
+                        <tr>
+                            <th>坐骑名称</th>
+                            <th>掉落来源</th>
+                            <th>平均掉落率</th>
+                            <th>统计样本</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>雷龙的踪迹</td>
+                            <td>大灾变团本</td>
+                            <td style="color: var(--accent-danger);">0.05%</td>
+                            <td>24,500 次击杀</td>
+                        </tr>
+                        <tr>
+                            <td>白龙宝宝</td>
+                            <td>冬拥湖日常</td>
+                            <td style="color: var(--accent-danger);">0.5%</td>
+                            <td>120,000 次尝试</td>
+                        </tr>
+                        <tr>
+                            <td>风暴勇士</td>
+                            <td>安其拉神殿</td>
+                            <td style="color: var(--accent-secondary);">1.2%</td>
+                            <td>45,000 次击杀</td>
+                        </tr>
+                        <tr>
+                            <td>血色十字军战马</td>
+                            <td>斯坦索姆</td>
+                            <td style="color: var(--accent-secondary);">0.8%</td>
+                            <td>89,000 次击杀</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="margin-top: 15px; font-size: 0.9rem; color: var(--text-muted);">
+                    * 注：以上数据基于社区收集样本估算，仅供参考。
+                </p>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section>
+            <div class="section-title">
+                <h2>常见问题 (FAQ)</h2>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h4>数据更新频率是多少？</h4>
+                    <p>我们每小时通过自动化脚本抓取一次全服数据，并在数据清洗后更新至数据库。对于稀有事件，我们提供实时推送功能。</p>
+                </div>
+                <div class="faq-item">
+                    <h4>如何保证数据的准确性？</h4>
+                    <p>人口普查采用众包模式，结合后台自动化统计。我们会定期进行人工抽样核对，并在页面上标注数据来源和统计时间。</p>
+                </div>
+                <div class="faq-item">
+                    <h4>支持哪些版本的数据查询？</h4>
+                    <p>目前主要提供正式服及怀旧服（60/70/80）的通用数据模型。具体版本划分请参考各服务器的详细说明。</p>
+                </div>
+                <div class="faq-item">
+                    <h4>数据导出功能如何使用？</h4>
+                    <p>注册登录用户可使用高级筛选功能，并支持 CSV 格式导出当前查询结果，便于在 Excel 中进行二次分析。</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo">魔兽<span>人口普查</span></a>
+                    <p>致力于为艾泽拉斯的冒险者提供最详尽、最客观的数据支持。无论是组建团队、选择职业还是寻找稀有伙伴，我们都在这里。</p>
+                </div>
+                <div class="footer-col">
+                    <h5>数据服务</h5>
+                    <ul>
+                        <li><a href="#">服务器列表</a></li>
+                        <li><a href="#">种族分布</a></li>
+                        <li><a href="#">职业排行</a></li>
+                        <li><a href="#">稀有掉落</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>工具</h5>
+                    <ul>
+                        <li><a href="#">人口计算器</a></li>
+                        <li><a href="#">坐骑进度追踪</a></li>
+                        <li><a href="#">CD 计划表</a></li>
+                        <li><a href="#">工资计算器</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>关于</h5>
+                    <ul>
+                        <li><a href="#">使用条款</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                        <li><a href="#">联系我们</a></li>
+                        <li><a href="#">加入我们</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 魔兽人口普查. 本站数据仅供娱乐与参考，所有游戏内容版权归暴雪娱乐所有。</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+                          </html>
